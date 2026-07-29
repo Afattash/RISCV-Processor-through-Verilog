@@ -1,0 +1,54 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000021dcded5ab0 .scope module, "adder_testbench" "adder_testbench" 2 3;
+ .timescale 0 0;
+v0000021dcde8a420_0 .net "cout", 0 0, L_0000021dcded2e80;  1 drivers
+v0000021dcde8a4c0_0 .var "input1", 3 0;
+v0000021dcde8a560_0 .var "input2", 3 0;
+v0000021dcde8a600_0 .net "sum", 3 0, L_0000021dcded2f20;  1 drivers
+S_0000021dcded5c40 .scope module, "DUT" "adder" 2 9, 3 1 0, S_0000021dcded5ab0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "input1";
+    .port_info 1 /INPUT 4 "input2";
+    .port_info 2 /OUTPUT 4 "sum";
+    .port_info 3 /OUTPUT 1 "cout";
+L_0000021dcdf20070 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0000021dcde86840_0 .net *"_ivl_10", 0 0, L_0000021dcdf20070;  1 drivers
+v0000021dcde86a80_0 .net *"_ivl_11", 4 0, L_0000021dcded2ac0;  1 drivers
+v0000021dcded5dd0_0 .net *"_ivl_3", 4 0, L_0000021dcded2a20;  1 drivers
+L_0000021dcdf20028 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v0000021dcded5e70_0 .net *"_ivl_6", 0 0, L_0000021dcdf20028;  1 drivers
+v0000021dcde8bdd0_0 .net *"_ivl_7", 4 0, L_0000021dcded2d40;  1 drivers
+v0000021dcde8be70_0 .net "cout", 0 0, L_0000021dcded2e80;  alias, 1 drivers
+v0000021dcde8bf10_0 .net "input1", 3 0, v0000021dcde8a4c0_0;  1 drivers
+v0000021dcde8a250_0 .net "input2", 3 0, v0000021dcde8a560_0;  1 drivers
+v0000021dcde8a2f0_0 .net "sum", 3 0, L_0000021dcded2f20;  alias, 1 drivers
+L_0000021dcded2e80 .part L_0000021dcded2ac0, 4, 1;
+L_0000021dcded2f20 .part L_0000021dcded2ac0, 0, 4;
+L_0000021dcded2a20 .concat [ 4 1 0 0], v0000021dcde8a4c0_0, L_0000021dcdf20028;
+L_0000021dcded2d40 .concat [ 4 1 0 0], v0000021dcde8a560_0, L_0000021dcdf20070;
+L_0000021dcded2ac0 .arith/sum 5, L_0000021dcded2a20, L_0000021dcded2d40;
+    .scope S_0000021dcded5ab0;
+T_0 ;
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v0000021dcde8a4c0_0, 0, 4;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0000021dcde8a560_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 22 "$display", "Input1 = %b, Input2 = %b, Sum = %b, Cout = %b", v0000021dcde8a4c0_0, v0000021dcde8a560_0, v0000021dcde8a600_0, v0000021dcde8a420_0 {0 0 0};
+    %vpi_call 2 25 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "adder_testbench.v";
+    "./adder.v";
